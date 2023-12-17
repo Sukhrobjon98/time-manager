@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 
 export type TaskType = "bugun" | "ertaga" | "keyin";
 
-type IErtaga = {
+export type IErtaga = {
   id: any;
   task: string;
   isDone: boolean;
@@ -19,9 +19,9 @@ export const taskData = defineStore({
       {
         id: 1,
         task: "Ovqat qilaman",
-        isDone: false,
+        isDone: true,
         date: "9:00",
-        key: "ertaga",
+        key: "bugun",
       },
       {
         id: 2,
@@ -36,7 +36,7 @@ export const taskData = defineStore({
         isDone: false,
         date: "15:00",
         key: "keyin",
-        fullDate: "09-09-2021",
+        fullDate: "09.09.2021",
       },
       {
         id: 4,
@@ -45,6 +45,13 @@ export const taskData = defineStore({
         date: "15:00",
         key: "ertaga",
       },
+      {
+        id: 5,
+        task: "Ishga chiqmayman",
+        isDone: true,
+        date: "15:00",
+        key: "bugun",
+      },
     ] as IErtaga[],
   }),
 
@@ -52,11 +59,9 @@ export const taskData = defineStore({
     addTask(task: IErtaga) {
       this.data.push(task);
     },
-    filterTask(task: string | TaskType) {
-      this.date2 = this.data.filter((item) => item.key === task);
-      console.log(this.date2);
-
-      return this.date2;
+    updateTask(task: IErtaga) {
+      const index = this.data.findIndex((item) => item.id === task.id);
+      this.data[index] = task;
     },
   },
 });

@@ -5,11 +5,16 @@
         <h1 class="head-title">Vazifalar Menedjeri</h1>
       </div>
       <div class="head-div2">
-        <TaskInput />
+        <div>
+          <TaskInput />
+          <TaskBugun />
+          <TaskErtaga />
+          <TaskKeyin />
+        </div>
+        <div class="task-title">
+          <TaskTitle />
+        </div>
       </div>
-      <TaskBugun />
-      <TaskErtaga />
-      <TaskKeyin />
     </div>
   </div>
 </template>
@@ -19,6 +24,7 @@ import TaskInput from "./components/TaskInput.vue";
 import TaskBugun from "./components/TaskBugun.vue";
 import TaskErtaga from "./components/TaskErtaga.vue";
 import TaskKeyin from "./components/TaskKeyin.vue";
+import TaskTitle from "./components/TaskTitle.vue";
 </script>
 <style>
 .head-page {
@@ -27,6 +33,8 @@ import TaskKeyin from "./components/TaskKeyin.vue";
   border: 2px solid #000;
   margin: 0 auto;
   padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
 }
 .main-page {
   overflow: hidden;
@@ -39,9 +47,20 @@ import TaskKeyin from "./components/TaskKeyin.vue";
 .head-title {
   margin: 0;
   text-align: center;
+  margin-bottom: 35px;
 }
-.head-div1,
 .head-div2 {
-  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 90%;
+}
+
+.task-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-top: 20px;
+  font-size: 14px;
 }
 </style>

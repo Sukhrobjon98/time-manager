@@ -6,8 +6,14 @@
     </div>
     <div>
       <p>
-        Bugun: {{ day }}.{{ month }}.{{ years }}, {{ hours }}:{{
-          minutes ? (minutes < 10 ? "0" + minutes : minutes) : minutes
+        Bugun: {{ time.getDate() }}.{{ time.getMonth() }}.{{
+          time.getFullYear()
+        }}, {{ time.getHours() }}:{{
+          time.getMinutes()
+            ? time.getMinutes() < 10
+              ? "0" + time.getMinutes()
+              : time.getMinutes()
+            : time.getMinutes()
         }}
       </p>
     </div>
@@ -19,16 +25,13 @@ import { ref } from "vue";
 import { uuid } from "vue-uuid";
 import { taskData } from "../store/data";
 let time = new Date();
-let hours = time.getHours();
-let minutes = time.getMinutes();
-let years = time.getFullYear();
-let month = time.getMonth();
-let day = time.getDate();
 let data = ref("");
 let taskDatas = taskData();
 let timeVaqt = ref("");
 let inputEnum = ["bugun", "ertaga"];
 let cheackInput = (data: string) => {
+  console.log(data);
+
   let dataValue = data.toLowerCase().split(" ");
   for (const iteam of dataValue) {
     // Bu yerda inputEnum ichida borligini tekshirib boramiz
@@ -45,7 +48,15 @@ let cheackInput = (data: string) => {
           id: uuid.v4(),
           task: dataValue.join(" "),
           isDone: false,
-          date: timeVaqt.value || `${hours}:${minutes}`,
+          date:
+            timeVaqt.value ||
+            `${time.getHours()}:${
+              time.getMinutes()
+                ? time.getMinutes() < 10
+                  ? "0" + time.getMinutes()
+                  : time.getMinutes()
+                : time.getMinutes()
+            }`,
           key: "ertaga",
         });
         timeVaqt.value = "";
@@ -62,7 +73,7 @@ let cheackInput = (data: string) => {
           id: uuid.v4(),
           task: dataValue.join(" "),
           isDone: false,
-          date: timeVaqt.value || `${hours}:${minutes}`,
+          date: timeVaqt.value || `${time.getHours()}:${time.getMinutes()}`,
           key: "bugun",
         });
         timeVaqt.value = "";
@@ -71,7 +82,7 @@ let cheackInput = (data: string) => {
     }
     if (iteam.includes(".") !== false) {
       let index = dataValue.indexOf(iteam);
-      if (dataValue[dataValue.length - 1].includes(":")!== false) {
+      if (dataValue[dataValue.length - 1].includes(":") !== false) {
         let timeIndex = dataValue.length - 1;
         timeVaqt.value = dataValue[timeIndex];
         dataValue.splice(timeIndex, timeIndex + 1);
@@ -81,7 +92,15 @@ let cheackInput = (data: string) => {
         id: uuid.v4(),
         task: dataValue.join(" "),
         isDone: false,
-        date: timeVaqt.value || `${hours}:${minutes}`,
+        date:
+          timeVaqt.value ||
+          `${time.getHours()}:${
+            time.getMinutes()
+              ? time.getMinutes() < 10
+                ? "0" + time.getMinutes()
+                : time.getMinutes()
+              : time.getMinutes()
+          }`,
         fullDate: iteam,
         key: "keyin",
       });
@@ -94,7 +113,15 @@ let cheackInput = (data: string) => {
       id: uuid.v4(),
       task: dataValue.join(" "),
       isDone: false,
-      date: timeVaqt.value || `${hours}:${minutes}`,
+      date:
+        timeVaqt.value ||
+        `${time.getHours()}:${
+          time.getMinutes()
+            ? time.getMinutes() < 10
+              ? "0" + time.getMinutes()
+              : time.getMinutes()
+            : time.getMinutes()
+        }`,
       key: "bugun",
     });
     timeVaqt.value = "";
@@ -104,6 +131,7 @@ let cheackInput = (data: string) => {
 let getInputData = () => {
   if (data.value === "") return;
   cheackInput(data.value);
+
   data.value = "";
 };
 </script>
