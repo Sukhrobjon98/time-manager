@@ -48,13 +48,9 @@ let cheackInput = (data: string) => {
           isDone: false,
           date:
             timeVaqt.value ||
-            `${time.getHours()}:${
-              time.getMinutes()
-                ? time.getMinutes() < 10
-                  ? "0" + time.getMinutes()
-                  : time.getMinutes()
-                : time.getMinutes()
-            }`,
+            `${
+          time.getHours() < 23 ? time.getHours() + 1 : "00"
+        }:00`,
           key: "ertaga",
         });
         timeVaqt.value = "";
@@ -71,7 +67,9 @@ let cheackInput = (data: string) => {
           id: uuid.v4(),
           task: dataValue.join(" "),
           isDone: false,
-          date: timeVaqt.value || `${time.getHours()}:${time.getMinutes()}`,
+          date: timeVaqt.value || `${
+          time.getHours() < 23 ? time.getHours() + 1 : "00"
+        }:00`,
           key: "bugun",
         });
         timeVaqt.value = "";
@@ -94,7 +92,6 @@ let cheackInput = (data: string) => {
         }:00`;
       }
       let iteamDate = dataValue[index];
-      console.log(iteamDate);
 
       dataValue.splice(index, index + 1);
       taskDatas.addTask({
@@ -118,14 +115,9 @@ let cheackInput = (data: string) => {
       task: dataValue.join(" "),
       isDone: false,
       date:
-        timeVaqt.value ||
-        `${time.getHours()}:${
-          time.getMinutes()
-            ? time.getMinutes() < 10
-              ? "0" + time.getMinutes()
-              : time.getMinutes()
-            : time.getMinutes()
-        }`,
+        timeVaqt.value ||`${
+          time.getHours() < 23 ? time.getHours() + 1 : "00"
+        }:00`,
       key: "bugun",
     });
     timeVaqt.value = "";
