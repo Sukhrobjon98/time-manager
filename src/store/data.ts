@@ -18,40 +18,27 @@ export const taskData = defineStore({
     data: [
       {
         id: 1,
-        task: "Ovqat qilaman",
-        isDone: true,
-        date: "9:00",
+        task: "Ovqatlanaman",
+        isDone: false,
+        date: "8:00",
         key: "bugun",
       },
       {
         id: 2,
-        task: "Bozorga boraman",
+        task: "Futbol o'ynayman",
         isDone: false,
         date: "12:00",
-        key: "bugun",
+        key: "ertaga",
       },
       {
         id: 3,
-        task: "Ishga chiqmayman",
+        task: "Darsga boraman",
         isDone: false,
         date: "15:00",
         key: "keyin",
         fullDate: "09.09.2021",
       },
-      {
-        id: 4,
-        task: "Ishga chiqmayman",
-        isDone: false,
-        date: "15:00",
-        key: "ertaga",
-      },
-      {
-        id: 5,
-        task: "Ishga chiqmayman",
-        isDone: true,
-        date: "15:00",
-        key: "bugun",
-      },
+      
     ] as IErtaga[],
   }),
 

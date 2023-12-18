@@ -16,6 +16,8 @@ const bugun = taskData();
 const iteams = ref<any[]>(bugun.data.filter((iteam) => iteam.key === "bugun"));
 iteams.value.sort((a, b) => Number(b.isDone) - Number(a.isDone)).reverse();
 
+
+// Bu yerda datalarni o'zgarishlariini kuzatib turadi va filter qiladi
 watch(bugun.data, (newValue) => {
   iteams.value = newValue.filter((iteam) => iteam.key === "bugun");
   iteams.value.sort((a, b) => Number(b.isDone) - Number(a.isDone)).reverse();

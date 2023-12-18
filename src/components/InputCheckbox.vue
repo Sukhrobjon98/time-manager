@@ -77,5 +77,6 @@ input {
 
 .checkbox {
   text-decoration: line-through;
+  color: blue ;
 }
 </style>
