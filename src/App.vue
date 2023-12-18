@@ -35,6 +35,7 @@ import TaskTitle from "./components/TaskTitle.vue";
   padding: 12px 14px;
   display: flex;
   flex-direction: column;
+  overflow-y: scroll  ;
 }
 .main-page {
   overflow: hidden;
